@@ -89,6 +89,20 @@
             gap: 0.5rem;
         }
 
+        .stats-source {
+            text-align: center;
+            margin-top: 0.5rem;
+            padding-right: 0.5rem;
+            font-size: 0.97rem;
+            color: #8a8694;
+        }
+
+        .stats-source i {
+            color: var(--primary-light);
+            margin-right: 0.4em;
+            font-size: 1em;
+        }
+
         .logo i {
             color: var(--accent);
         }
@@ -925,14 +939,13 @@
             background: linear-gradient(135deg, var(--danger) 0%, #c0392b 100%);
             color: var(--white);
             text-align: center;
-            padding: 1rem;
+            padding: 0.3rem 1rem;
             font-weight: 600;
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 1rem;
             flex-wrap: wrap;
-            
         }
 
         .emergency-banner i {
@@ -1057,7 +1070,86 @@
             color: var(--accent);
         }
 
+        /* Formation Section */
+        .formation {
+            background: var(--white);
+        }
+
+        .formation-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .formation-card {
+            background: var(--warm-light);
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--primary);
+        }
+
+        .formation-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(107, 76, 122, 0.15);
+        }
+
+        .formation-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--primary-light);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .formation-card h4 {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .formation-card p {
+            font-size: 0.95rem;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+        }
+
+        .formation-link {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.3s ease;
+        }
+
+        .formation-link:hover {
+            color: var(--accent);
+            gap: 0.8rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .formation-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
         /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -1148,8 +1240,28 @@
         }
 
         @media (max-width: 768px) {
-            .nav-links {
+            /*.nav-links {
                 display: none;
+            }*/
+
+            .nav-links {
+                position: absolute;
+                top: 100%;
+                right: 0;
+                left: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+                padding: 1.5rem 2rem;
+                display: none;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                animation: fadeIn 0.3s ease;
+            }
+
+            .nav-links.show {
+                display: flex;
             }
 
             .mobile-menu {
@@ -1198,7 +1310,7 @@
     <!-- Bandeau d'urgence -->
     <div class="emergency-banner">
         <i class="fas fa-exclamation-triangle"></i>
-        En danger immédiat ? Appelez le <a href="tel:117">117</a> (Police) ou utilisez notre <a href="#bot">Bot d'alerte</a>
+        En danger immédiat ? Appelez le <a href="tel:117">117</a> (Police), le <a href="tel:8202">8202</a> (Antic), ou utilisez notre <a href="#bot">Bot d'alerte</a>
         <i class="fas fa-exclamation-triangle"></i>
     </div>
 
@@ -1214,6 +1326,7 @@
                 <li><a href="#types"><i class="fas fa-list"></i> Types de VBG</a></li>
                 <li><a href="#quiz"><i class="fas fa-clipboard-question"></i> Suis-je victime ?</a></li>
                 <li><a href="#ressources"><i class="fas fa-hands-helping"></i> Ressources</a></li>
+                <li><a href="#formation"><i class="fas fa-chalkboard-teacher"></i> Formation</a></li>
                 <li><a href="#bot" class="nav-cta"><i class="fas fa-life-ring"></i> Obtenir de l'aide</a></li>
             </ul>
             <div class="mobile-menu">
@@ -1300,6 +1413,12 @@
                 <div class="stat-number">24/7</div>
                 <div class="stat-label">notre bot est disponible pour vous</div>
             </div>
+        </div>
+        <div class="stats-source">
+            <small>
+                <i class="fas fa-info-circle"></i>
+                Sources des statistiques : EDS (Enquêtes Démographiques de Santé) 2018
+            </small>
         </div>
     </section>
 
@@ -1541,6 +1660,38 @@
         </div>
     </section>
 
+    <!-- Formations -->
+    <section id="formation" class="section formation">
+        <div class="section-header">
+            <i class="fas fa-graduation-cap"></i>
+            <h2>Se former pour mieux interagir sur les réseaux sociaux</h2>
+            <p>Apprenez à utiliser les réseaux sociaux de manière plus sûre, plus informée et plus confiante.</p>
+        </div>
+
+        <div class="formation-grid">
+            <div class="formation-card">
+                <div class="formation-icon"><i class="fas fa-shield-alt"></i></div>
+                <h4>Sécurité & protection</h4>
+                <p>Apprenez à sécuriser vos comptes, éviter le harcèlement et détecter les comportements suspects.</p>
+                <a href="#" class="formation-link">Commencer <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="formation-card">
+                <div class="formation-icon"><i class="fas fa-comments"></i></div>
+                <h4>Bonne communication</h4>
+                <p>Développez une communication claire, respectueuse et adaptée aux réseaux sociaux.</p>
+                <a href="#" class="formation-link">Voir le module <i class="fas fa-arrow-right"></i></a>
+            </div>
+
+            <div class="formation-card">
+                <div class="formation-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                <h4>Cyberviolences</h4>
+                <p>Identifiez les signes de cyberviolence et découvrez comment réagir efficacement.</p>
+                <a href="#" class="formation-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
     <!-- Bot CTA -->
     <section id="bot" class="section bot-cta">
         <div class="bot-container">
@@ -1693,10 +1844,10 @@
         });
 
         // Mobile menu toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        document.querySelector('.mobile-menu').addEventListener('click', function () {
+            document.querySelector('.nav-links').classList.toggle('show');
         });
+
     </script>
 </body>
 </html>
