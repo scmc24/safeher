@@ -76,6 +76,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
 
         .logo {
@@ -87,6 +88,7 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
+            z-index: 1001;
         }
 
         .logo i {
@@ -142,6 +144,17 @@
             font-size: 1.5rem;
             color: var(--primary);
             cursor: pointer;
+            z-index: 1001;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            transition: background 0.3s ease;
+        }
+
+        .mobile-menu:hover {
+            background: var(--warm-light);
         }
 
         /* Hero Section */
@@ -1148,20 +1161,97 @@
         }
 
         @media (max-width: 768px) {
+            .nav-container {
+                position: relative;
+            }
+
             .nav-links {
                 display: none;
+                position: absolute;
+                top: calc(100% + 0.5rem);
+                left: 1rem;
+                right: 1rem;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 0.5rem;
+                box-shadow: 0 10px 40px rgba(107, 76, 122, 0.2);
+                border-radius: 15px;
+                z-index: 1000;
+                border: 1px solid rgba(107, 76, 122, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                padding: 1rem 1.2rem;
+                border-radius: 10px;
+                transition: background 0.3s ease, color 0.3s ease;
+                width: 100%;
+            }
+
+            .nav-links a:hover {
+                background: var(--warm-light);
+            }
+
+            .nav-cta {
+                text-align: center;
+                justify-content: center;
+                margin-top: 0.5rem;
+                width: 100%;
+            }
+
+            .nav-cta:hover {
+                background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+                transform: none;
             }
 
             .mobile-menu {
-                display: block;
+                display: flex;
+            }
+
+            .hero {
+                padding: 6rem 1.5rem 3rem;
             }
 
             .hero h1 {
                 font-size: 2rem;
             }
 
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .section {
+                padding: 4rem 1.5rem;
+            }
+
             .section-header h2 {
-                font-size: 2rem;
+                font-size: 1.8rem;
+            }
+
+            .section-header p {
+                font-size: 1rem;
+            }
+
+            .definition-box {
+                padding: 2rem;
             }
 
             .criteria-grid,
@@ -1172,24 +1262,99 @@
 
             .stats-container {
                 grid-template-columns: repeat(2, 1fr);
+                gap: 1rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .quiz-container {
+                padding: 1.5rem;
+            }
+
+            .quiz-options {
+                flex-direction: column;
+            }
+
+            .quiz-question p {
+                font-size: 1rem;
+            }
+
+            .bot-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .bot-visual {
+                padding: 1rem;
+            }
+
+            .telegram-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 1rem 2rem;
             }
 
             .footer-grid {
                 grid-template-columns: 1fr;
                 text-align: center;
+                gap: 2rem;
             }
 
             .footer-social {
                 justify-content: center;
             }
 
+            .footer-links a {
+                justify-content: center;
+            }
+
             .footer-bottom {
                 flex-direction: column;
                 gap: 1rem;
+                text-align: center;
             }
 
             .emergency-banner {
-                font-size: 0.9rem;
+                font-size: 0.85rem;
+                padding: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .logo {
+                font-size: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+
+            .hero-circle {
+                width: 220px;
+                height: 220px;
+            }
+
+            .hero-circle i {
+                font-size: 4rem;
+            }
+
+            .stat-item {
+                padding: 1rem 0.5rem;
+            }
+
+            .stat-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.2rem;
+            }
+
+            .stat-number {
+                font-size: 1.8rem;
+            }
+
+            .stat-label {
+                font-size: 0.85rem;
             }
         }
     </style>
@@ -1209,15 +1374,15 @@
                 <i class="fas fa-shield-heart"></i>
                 Safe<span>Her</span>
             </a>
-            <ul class="nav-links">
+            <ul class="nav-links" id="navLinks">
                 <li><a href="#comprendre"><i class="fas fa-book-open"></i> Comprendre</a></li>
                 <li><a href="#types"><i class="fas fa-list"></i> Types de VBG</a></li>
                 <li><a href="#quiz"><i class="fas fa-clipboard-question"></i> Suis-je victime ?</a></li>
                 <li><a href="#ressources"><i class="fas fa-hands-helping"></i> Ressources</a></li>
                 <li><a href="#bot" class="nav-cta"><i class="fas fa-life-ring"></i> Obtenir de l'aide</a></li>
             </ul>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
+            <div class="mobile-menu" id="mobileMenu">
+                <i class="fas fa-bars" id="menuIcon"></i>
             </div>
         </div>
     </nav>
@@ -1642,6 +1807,41 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        const mobileMenu = document.getElementById('mobileMenu');
+        const navLinks = document.getElementById('navLinks');
+        const menuIcon = document.getElementById('menuIcon');
+
+        mobileMenu.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            // Toggle icon between bars and times
+            if (navLinks.classList.contains('active')) {
+                menuIcon.classList.remove('fa-bars');
+                menuIcon.classList.add('fa-times');
+            } else {
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking on a link
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', function() {
+                navLinks.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!navLinks.contains(e.target) && !mobileMenu.contains(e.target)) {
+                navLinks.classList.remove('active');
+                menuIcon.classList.remove('fa-times');
+                menuIcon.classList.add('fa-bars');
+            }
+        });
+
         // Quiz functionality
         document.querySelectorAll('.quiz-option').forEach(option => {
             option.addEventListener('click', function() {
@@ -1690,12 +1890,6 @@
             } else {
                 nav.style.boxShadow = '0 2px 20px rgba(107, 76, 122, 0.1)';
             }
-        });
-
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
         });
     </script>
 </body>
