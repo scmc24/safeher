@@ -91,20 +91,6 @@
             z-index: 1001;
         }
 
-        .stats-source {
-            text-align: center;
-            margin-top: 0.5rem;
-            padding-right: 0.5rem;
-            font-size: 0.97rem;
-            color: #8a8694;
-        }
-
-        .stats-source i {
-            color: var(--primary-light);
-            margin-right: 0.4em;
-            font-size: 1em;
-        }
-
         .logo i {
             color: var(--accent);
         }
@@ -1269,6 +1255,49 @@
                 gap: 1.5rem;
                 padding: 1.5rem 2rem;
                 display: none;
+                position: absolute;
+                top: calc(100% + 0.5rem);
+                left: 1rem;
+                right: 1rem;
+                background: var(--white);
+                flex-direction: column;
+                padding: 1.5rem;
+                gap: 0.5rem;
+                box-shadow: 0 10px 40px rgba(107, 76, 122, 0.2);
+                border-radius: 15px;
+                z-index: 1000;
+                border: 1px solid rgba(107, 76, 122, 0.1);
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                padding: 1rem 1.2rem;
+                border-radius: 10px;
+                transition: background 0.3s ease, color 0.3s ease;
+                width: 100%;
+            }
+
+            .nav-links a:hover {
+                background: var(--warm-light);
+            }
+
+            .nav-cta {
+                text-align: center;
+                justify-content: center;
+                margin-top: 0.5rem;
+                width: 100%;
+            }
+
+            .nav-cta:hover {
+                background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+                transform: none;
             }
 
             .mobile-menu {
@@ -1988,12 +2017,6 @@
             } else {
                 nav.style.boxShadow = '0 2px 20px rgba(107, 76, 122, 0.1)';
             }
-        });
-
-        // Mobile menu toggle
-        document.querySelector('.mobile-menu').addEventListener('click', function() {
-            const navLinks = document.querySelector('.nav-links');
-            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
         });
     </script>
 </body>
