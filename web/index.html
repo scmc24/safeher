@@ -1,0 +1,1702 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeHer - Protection des Femmes contre les VBG</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Bootstrap Icons (backup) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css">
+    
+    <style>
+        :root {
+            --primary: #6B4C7A;
+            --primary-dark: #4A3354;
+            --primary-light: #9D7FB0;
+            --accent: #E8998D;
+            --accent-light: #F2BCB5;
+            --warm: #F5E6D3;
+            --warm-light: #FDF8F3;
+            --text-dark: #2D2A32;
+            --text-medium: #5A5662;
+            --text-light: #8A8694;
+            --white: #FFFFFF;
+            --success: #7CB69D;
+            --warning: #E5B35A;
+            --danger: #D66853;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background: var(--warm-light);
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            box-shadow: 0 2px 20px rgba(107, 76, 122, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 600;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a i {
+            font-size: 0.9rem;
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white) !important;
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(107, 76, 122, 0.4);
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 8rem 2rem 4rem;
+            background: linear-gradient(135deg, var(--warm-light) 0%, var(--warm) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(107, 76, 122, 0.08) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--accent-light);
+            color: var(--primary-dark);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            animation: fadeInUp 0.6s ease 0.1s both;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+            margin-bottom: 2rem;
+            max-width: 500px;
+            animation: fadeInUp 0.6s ease 0.2s both;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            animation: fadeInUp 0.6s ease 0.3s both;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn i {
+            font-size: 1.1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(107, 76, 122, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(107, 76, 122, 0.5);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary-light);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: var(--white);
+            border-color: var(--primary);
+        }
+
+        .hero-visual {
+            position: relative;
+            animation: fadeInRight 0.8s ease 0.4s both;
+        }
+
+        .hero-illustration {
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+            display: block;
+            position: relative;
+        }
+
+        .hero-circle {
+            width: 400px;
+            height: 400px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .hero-circle i {
+            font-size: 8rem;
+            color: var(--white);
+            opacity: 0.9;
+        }
+
+        .hero-card {
+            position: absolute;
+            background: var(--white);
+            padding: 1.2rem 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero-card-1 {
+            top: 10%;
+            left: -10%;
+        }
+
+        .hero-card-2 {
+            bottom: 20%;
+            right: -5%;
+            animation-delay: 1.5s;
+        }
+
+        .hero-card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+        }
+
+        .hero-card-icon.purple {
+            background: var(--primary-light);
+            color: var(--white);
+        }
+
+        .hero-card-icon.coral {
+            background: var(--accent-light);
+            color: var(--primary-dark);
+        }
+
+        .hero-card-text h4 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.95rem;
+            font-weight: 700;
+        }
+
+        .hero-card-text p {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            margin: 0;
+        }
+
+        /* Stats */
+        .stats {
+            background: var(--white);
+            padding: 3rem 2rem;
+        }
+
+        .stats-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .stat-item {
+            padding: 1.5rem;
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            margin: 0 auto 1rem;
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--white);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        /* Section Comprendre */
+        .section {
+            padding: 6rem 2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--text-medium);
+            font-size: 1.1rem;
+        }
+
+        .comprendre {
+            background: var(--white);
+        }
+
+        .definition-box {
+            max-width: 900px;
+            margin: 0 auto 4rem;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 20px;
+            padding: 3rem;
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .definition-box::before {
+            content: '\f10d';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            top: 20px;
+            left: 30px;
+            font-size: 4rem;
+            opacity: 0.1;
+        }
+
+        .definition-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .definition-box p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+
+        .criteria-grid {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .criteria-card {
+            background: var(--warm-light);
+            border-radius: 20px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .criteria-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(107, 76, 122, 0.15);
+        }
+
+        .criteria-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: var(--white);
+        }
+
+        .criteria-card h4 {
+            font-size: 1.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .criteria-card p {
+            color: var(--text-medium);
+            font-size: 0.95rem;
+        }
+
+        /* Types de VBG */
+        .types {
+            background: var(--warm-light);
+        }
+
+        .types-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+        }
+
+        .type-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 2rem;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .type-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 10px 30px rgba(107, 76, 122, 0.1);
+        }
+
+        .type-card.physical { border-left-color: var(--danger); }
+        .type-card.sexual { border-left-color: #9B59B6; }
+        .type-card.psychological { border-left-color: var(--warning); }
+        .type-card.economic { border-left-color: #3498DB; }
+        .type-card.marriage { border-left-color: var(--accent); }
+        .type-card.cyber { border-left-color: #1ABC9C; }
+
+        .type-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+
+        .type-card.physical .type-icon { background: var(--danger); }
+        .type-card.sexual .type-icon { background: #9B59B6; }
+        .type-card.psychological .type-icon { background: var(--warning); }
+        .type-card.economic .type-icon { background: #3498DB; }
+        .type-card.marriage .type-icon { background: var(--accent); }
+        .type-card.cyber .type-icon { background: #1ABC9C; }
+
+        .type-card h4 {
+            font-size: 1.1rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .type-card p {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .type-examples {
+            font-size: 0.85rem;
+            color: var(--text-light);
+            font-style: italic;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+
+        .type-examples i {
+            color: var(--primary-light);
+            margin-top: 3px;
+        }
+
+        /* Quiz Section */
+        .quiz {
+            background: var(--white);
+        }
+
+        .quiz-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: var(--warm-light);
+            border-radius: 25px;
+            padding: 3rem;
+        }
+
+        .quiz-question {
+            margin-bottom: 1.5rem;
+        }
+
+        .quiz-question p {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+            padding-left: 1rem;
+            border-left: 3px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quiz-options {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .quiz-option {
+            flex: 1;
+            padding: 1rem;
+            border: 2px solid var(--primary-light);
+            border-radius: 12px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--white);
+            font-weight: 600;
+        }
+
+        .quiz-option:hover {
+            border-color: var(--primary);
+            background: var(--primary);
+            color: var(--white);
+        }
+
+        .quiz-option.selected {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .quiz-result {
+            margin-top: 2rem;
+            padding: 2rem;
+            background: var(--white);
+            border-radius: 15px;
+            display: none;
+            border-left: 4px solid var(--warning);
+        }
+
+        .quiz-result.visible {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        .quiz-result h4 {
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quiz-result p {
+            color: var(--text-medium);
+        }
+
+        /* Resources */
+        .resources {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+        }
+
+        .resources .section-header i,
+        .resources .section-header h2,
+        .resources .section-header p {
+            color: var(--white);
+        }
+
+        .resources-grid {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .resource-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .resource-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--accent);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--white);
+        }
+
+        .resource-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .resource-card p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+            margin-bottom: 1rem;
+        }
+
+        .resource-link {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: gap 0.3s ease;
+        }
+
+        .resource-link:hover {
+            text-decoration: underline;
+            gap: 0.8rem;
+        }
+
+        /* Bot CTA Section */
+        .bot-cta {
+            background: var(--warm-light);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .bot-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%236B4C7A' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .bot-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .bot-content h2 {
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .bot-content p {
+            color: var(--text-medium);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+        }
+
+        .bot-features {
+            list-style: none;
+            margin-bottom: 2rem;
+        }
+
+        .bot-features li {
+            padding: 0.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-dark);
+        }
+
+        .bot-features li i {
+            width: 28px;
+            height: 28px;
+            background: var(--success);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+        }
+
+        .bot-visual {
+            background: var(--white);
+            border-radius: 25px;
+            padding: 2rem;
+            box-shadow: 0 20px 60px rgba(107, 76, 122, 0.15);
+        }
+
+        .bot-mockup {
+            background: linear-gradient(135deg, #0088cc 0%, #005f8a 100%);
+            border-radius: 20px;
+            padding: 1.5rem;
+            color: var(--white);
+        }
+
+        .bot-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 1rem;
+        }
+
+        .bot-avatar {
+            width: 50px;
+            height: 50px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .bot-name h4 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .bot-name p {
+            font-size: 0.8rem;
+            opacity: 0.8;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .bot-name p i {
+            font-size: 0.5rem;
+            color: #4CAF50;
+        }
+
+        .bot-messages {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        .bot-message {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1rem;
+            border-radius: 15px;
+            border-top-left-radius: 5px;
+            font-size: 0.9rem;
+        }
+
+        .bot-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .bot-btn {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.6rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .bot-btn:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: linear-gradient(135deg, #0088cc 0%, #005f8a 100%);
+            color: var(--white);
+            padding: 1.2rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(0, 136, 204, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .telegram-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 136, 204, 0.5);
+        }
+
+        .telegram-btn i {
+            font-size: 1.4rem;
+        }
+
+        /* Emergency Banner */
+        .emergency-banner {
+            background: linear-gradient(135deg, var(--danger) 0%, #c0392b 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            
+        }
+
+        .emergency-banner i {
+            animation: pulse 1.5s infinite;
+        }
+
+        .emergency-banner a {
+            color: var(--white);
+            text-decoration: underline;
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand .logo {
+            color: var(--white);
+            margin-bottom: 1rem;
+            display: inline-flex;
+        }
+
+        .footer-brand p {
+            opacity: 0.8;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            transition: all 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.8;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .footer-links a:hover {
+            opacity: 1;
+            padding-left: 5px;
+        }
+
+        .footer-links a i {
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-links a:hover i {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .footer-bottom i {
+            color: var(--accent);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero-container,
+            .bot-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-card {
+                display: none;
+            }
+
+            .hero-circle {
+                width: 300px;
+                height: 300px;
+            }
+
+            .hero-circle i {
+                font-size: 5rem;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .criteria-grid,
+            .types-grid,
+            .resources-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .criteria-grid,
+            .types-grid,
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .footer-social {
+                justify-content: center;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .emergency-banner {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Bandeau d'urgence -->
+    <div class="emergency-banner">
+        <i class="fas fa-exclamation-triangle"></i>
+        En danger immédiat ? Appelez le <a href="tel:117">117</a> (Police) ou utilisez notre <a href="#bot">Bot d'alerte</a>
+        <i class="fas fa-exclamation-triangle"></i>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-shield-heart"></i>
+                Safe<span>Her</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#comprendre"><i class="fas fa-book-open"></i> Comprendre</a></li>
+                <li><a href="#types"><i class="fas fa-list"></i> Types de VBG</a></li>
+                <li><a href="#quiz"><i class="fas fa-clipboard-question"></i> Suis-je victime ?</a></li>
+                <li><a href="#ressources"><i class="fas fa-hands-helping"></i> Ressources</a></li>
+                <li><a href="#bot" class="nav-cta"><i class="fas fa-life-ring"></i> Obtenir de l'aide</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    Protection • Information • Accompagnement
+                </span>
+                <h1>Ensemble contre les <span>violences</span> faites aux femmes</h1>
+                <p>SafeHer est votre allié dans la lutte contre les Violences Basées sur le Genre. Informez-vous, protégez-vous, et accédez à l'aide dont vous avez besoin.</p>
+                <div class="hero-buttons">
+                    <a href="#bot" class="btn btn-primary">
+                        <i class="fas fa-robot"></i>
+                        Accéder au Bot d'aide
+                    </a>
+                    <a href="#comprendre" class="btn btn-secondary">
+                        <i class="fas fa-arrow-down"></i>
+                        En savoir plus
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-circle">
+                    <i class="fas fa-hand-holding-heart"></i>
+                </div>
+                <div class="hero-card hero-card-1">
+                    <div class="hero-card-icon purple">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="hero-card-text">
+                        <h4>Protection 24/7</h4>
+                        <p>Alerte en temps réel</p>
+                    </div>
+                </div>
+                <div class="hero-card hero-card-2">
+                    <div class="hero-card-icon coral">
+                        <i class="fas fa-comments"></i>
+                    </div>
+                    <div class="hero-card-text">
+                        <h4>Accompagnement</h4>
+                        <p>Experts à votre écoute</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <div class="stat-number">1/3</div>
+                <div class="stat-label">des femmes victimes de violence dans leur vie</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-globe"></i>
+                </div>
+                <div class="stat-number">60%</div>
+                <div class="stat-label">des femmes en ligne victimes de cyberviolence</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-eye-slash"></i>
+                </div>
+                <div class="stat-number">80%</div>
+                <div class="stat-label">des cas ne sont jamais signalés</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">notre bot est disponible pour vous</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprendre les VBG -->
+    <section id="comprendre" class="section comprendre">
+        <div class="section-header">
+            <i class="fas fa-graduation-cap"></i>
+            <h2>Comprendre les Violences Basées sur le Genre</h2>
+            <p>Les VBG sont des actes de violence dirigés contre une personne en raison de son genre. Comprendre, c'est le premier pas vers la protection.</p>
+        </div>
+
+        <div class="definition-box">
+            <h3><i class="fas fa-info-circle"></i> Définition</h3>
+            <p>Une Violence Basée sur le Genre (VBG) est tout acte nuisible perpétré contre la volonté d'une personne et fondé sur les différences sociales entre les hommes et les femmes. Ces violences s'appuient sur un <strong>déséquilibre de pouvoir</strong> et une <strong>absence de consentement éclairé</strong>.</p>
+        </div>
+
+        <div class="criteria-grid">
+            <div class="criteria-card">
+                <div class="criteria-icon">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <h4>Déséquilibre de pouvoir</h4>
+                <p>Une relation où l'un domine l'autre : conjoint, parent, employeur, figure d'autorité...</p>
+            </div>
+            <div class="criteria-card">
+                <div class="criteria-icon">
+                    <i class="fas fa-ban"></i>
+                </div>
+                <h4>Absence de consentement</h4>
+                <p>La victime n'a pas donné son accord libre et éclairé, ou n'est pas en mesure de le faire.</p>
+            </div>
+            <div class="criteria-card">
+                <div class="criteria-icon">
+                    <i class="fas fa-landmark"></i>
+                </div>
+                <h4>Construction sociale</h4>
+                <p>La violence s'appuie sur des normes de genre, des traditions ou des croyances culturelles discriminatoires.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Types de VBG -->
+    <section id="types" class="section types">
+        <div class="section-header">
+            <i class="fas fa-exclamation-circle"></i>
+            <h2>Les différents types de violences</h2>
+            <p>Les VBG prennent de nombreuses formes. Reconnaître ces formes est essentiel pour identifier une situation de violence.</p>
+        </div>
+
+        <div class="types-grid">
+            <div class="type-card physical">
+                <div class="type-icon">
+                    <i class="fas fa-fist-raised"></i>
+                </div>
+                <h4>Violence physique</h4>
+                <p>Tout acte visant à blesser ou à faire mal physiquement.</p>
+                <span class="type-examples">
+                    <i class="fas fa-arrow-right"></i>
+                    Coups, gifles, brûlures, strangulation, séquestration...
+                </span>
+            </div>
+            <div class="type-card sexual">
+                <div class="type-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h4>Violence sexuelle</h4>
+                <p>Tout acte sexuel non consenti ou sous contrainte.</p>
+                <span class="type-examples">
+                    <i class="fas fa-arrow-right"></i>
+                    Viol, attouchements, harcèlement sexuel, excision...
+                </span>
+            </div>
+            <div class="type-card psychological">
+                <div class="type-icon">
+                    <i class="fas fa-brain"></i>
+                </div>
+                <h4>Violence psychologique</h4>
+                <p>Atteintes à l'estime de soi et à la santé mentale.</p>
+                <span class="type-examples">
+                    <i class="fas fa-arrow-right"></i>
+                    Insultes, humiliations, menaces, isolement, contrôle...
+                </span>
+            </div>
+            <div class="type-card economic">
+                <div class="type-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <h4>Violence économique</h4>
+                <p>Contrôle des ressources financières pour créer une dépendance.</p>
+                <span class="type-examples">
+                    <i class="fas fa-arrow-right"></i>
+                    Privation d'argent, interdiction de travailler, vol de salaire...
+                </span>
+            </div>
+            <div class="type-card marriage">
+                <div class="type-icon">
+                    <i class="fas fa-ring"></i>
+                </div>
+                <h4>Mariage forcé/précoce</h4>
+                <p>Union imposée sans le consentement libre de la personne.</p>
+                <span class="type-examples">
+                    <i class="fas fa-arrow-right"></i>
+                    Mariage avant 18 ans, mariage arrangé forcé...
+                </span>
+            </div>
+            <div class="type-card cyber">
+                <div class="type-icon">
+                    <i class="fas fa-mobile-alt"></i>
+                </div>
+                <h4>Cyberviolence</h4>
+                <p>Violences commises via les technologies numériques.</p>
+                <span class="type-examples">
+                    <i class="fas fa-arrow-right"></i>
+                    Harcèlement en ligne, revenge porn, doxxing, surveillance...
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz -->
+    <section id="quiz" class="section quiz">
+        <div class="section-header">
+            <i class="fas fa-clipboard-check"></i>
+            <h2>Suis-je victime de VBG ?</h2>
+            <p>Répondez à ces questions pour vous aider à identifier votre situation. Ce quiz est anonyme et confidentiel.</p>
+        </div>
+
+        <div class="quiz-container">
+            <div class="quiz-question" data-question="1">
+                <p><i class="fas fa-question-circle"></i> Avez-vous peur de la réaction de votre partenaire ou d'un proche ?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-value="yes">Oui</div>
+                    <div class="quiz-option" data-value="sometimes">Parfois</div>
+                    <div class="quiz-option" data-value="no">Non</div>
+                </div>
+            </div>
+            <div class="quiz-question" data-question="2">
+                <p><i class="fas fa-question-circle"></i> Contrôle-t-il/elle vos déplacements, vos fréquentations ou votre argent ?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-value="yes">Oui</div>
+                    <div class="quiz-option" data-value="sometimes">Parfois</div>
+                    <div class="quiz-option" data-value="no">Non</div>
+                </div>
+            </div>
+            <div class="quiz-question" data-question="3">
+                <p><i class="fas fa-question-circle"></i> Avez-vous déjà été insultée, humiliée ou rabaissée ?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-value="yes">Oui</div>
+                    <div class="quiz-option" data-value="sometimes">Parfois</div>
+                    <div class="quiz-option" data-value="no">Non</div>
+                </div>
+            </div>
+            <div class="quiz-question" data-question="4">
+                <p><i class="fas fa-question-circle"></i> Avez-vous subi des violences physiques ou sexuelles ?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-value="yes">Oui</div>
+                    <div class="quiz-option" data-value="sometimes">Une fois</div>
+                    <div class="quiz-option" data-value="no">Non</div>
+                </div>
+            </div>
+            <div class="quiz-question" data-question="5">
+                <p><i class="fas fa-question-circle"></i> Avez-vous l'impression de marcher sur des œufs pour éviter les conflits ?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" data-value="yes">Oui</div>
+                    <div class="quiz-option" data-value="sometimes">Parfois</div>
+                    <div class="quiz-option" data-value="no">Non</div>
+                </div>
+            </div>
+
+            <div class="quiz-result" id="quizResult">
+                <h4><i class="fas fa-exclamation-triangle"></i> Votre situation nécessite attention</h4>
+                <p>Vos réponses indiquent que vous pourriez être dans une situation de violence. Vous n'êtes pas seule. Notre bot peut vous mettre en relation avec des experts qui peuvent vous aider en toute confidentialité.</p>
+                <br>
+                <a href="#bot" class="btn btn-primary">
+                    <i class="fas fa-arrow-right"></i>
+                    Accéder à l'aide
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ressources -->
+    <section id="ressources" class="section resources">
+        <div class="section-header">
+            <i class="fas fa-hands-helping"></i>
+            <h2>Ressources et contacts utiles</h2>
+            <p>Des organisations sont là pour vous aider. N'hésitez pas à les contacter.</p>
+        </div>
+
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <h4>Lignes d'écoute</h4>
+                <p>Des professionnels à votre écoute 24h/24 pour vous conseiller et vous orienter.</p>
+                <a href="#" class="resource-link">Voir les numéros <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-hospital"></i>
+                </div>
+                <h4>Centres de santé</h4>
+                <p>Centres médicaux spécialisés dans la prise en charge des victimes de violences.</p>
+                <a href="#" class="resource-link">Trouver un centre <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-gavel"></i>
+                </div>
+                <h4>Aide juridique</h4>
+                <p>Avocats et associations offrant une assistance juridique gratuite ou à faible coût.</p>
+                <a href="#" class="resource-link">Obtenir de l'aide <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <h4>Hébergement d'urgence</h4>
+                <p>Centres d'accueil et foyers pour vous mettre en sécurité si nécessaire.</p>
+                <a href="#" class="resource-link">Trouver un refuge <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h4>ONG partenaires</h4>
+                <p>Organisations qui accompagnent les victimes dans leur parcours de reconstruction.</p>
+                <a href="#" class="resource-link">Voir les ONG <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon">
+                    <i class="fas fa-user-md"></i>
+                </div>
+                <h4>Soutien psychologique</h4>
+                <p>Psychologues et thérapeutes spécialisés dans le trauma et les violences.</p>
+                <a href="#" class="resource-link">Prendre RDV <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bot CTA -->
+    <section id="bot" class="section bot-cta">
+        <div class="bot-container">
+            <div class="bot-content">
+                <h2>Notre Bot Telegram d'aide et d'alerte</h2>
+                <p>Un assistant disponible 24h/24 pour vous accompagner, vous orienter vers les bons experts selon votre situation, et alerter vos proches en cas d'urgence.</p>
+                
+                <ul class="bot-features">
+                    <li><i class="fas fa-check"></i> Analyse de votre situation et orientation personnalisée</li>
+                    <li><i class="fas fa-check"></i> Parcours adapté : médecin, psychologue, avocat, assistant social...</li>
+                    <li><i class="fas fa-check"></i> Alerte SOS discrète vers vos contacts de confiance</li>
+                    <li><i class="fas fa-check"></i> 100% confidentiel et gratuit</li>
+                    <li><i class="fas fa-check"></i> Fonctionne même avec une connexion faible</li>
+                </ul>
+
+                <a href="https://t.me/SafeHer_VBG_bot" target="_blank" class="telegram-btn">
+                    <i class="fab fa-telegram-plane"></i>
+                    Ouvrir le Bot SafeHer
+                </a>
+            </div>
+
+            <div class="bot-visual">
+                <div class="bot-mockup">
+                    <div class="bot-header">
+                        <div class="bot-avatar">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="bot-name">
+                            <h4>SafeHer Bot</h4>
+                            <p><i class="fas fa-circle"></i> En ligne</p>
+                        </div>
+                    </div>
+                    <div class="bot-messages">
+                        <div class="bot-message">
+                            Bonjour et bienvenue <i class="fas fa-heart" style="color: var(--accent);"></i><br><br>
+                            Je suis là pour vous aider en toute confidentialité. Comment puis-je vous accompagner aujourd'hui ?
+                        </div>
+                        <div class="bot-buttons">
+                            <span class="bot-btn"><i class="fas fa-exclamation-circle"></i> Alerte urgence</span>
+                            <span class="bot-btn"><i class="fas fa-comments"></i> J'ai besoin d'aide</span>
+                            <span class="bot-btn"><i class="fas fa-book"></i> M'informer</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <i class="fas fa-shield-heart"></i>
+                        Safe<span>Her</span>
+                    </a>
+                    <p>SafeHer est une initiative pour la protection des femmes et des filles contre les Violences Basées sur le Genre. Nous croyons en un monde où chaque femme peut vivre en sécurité et en dignité.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4><i class="fas fa-compass"></i> Navigation</h4>
+                    <ul>
+                        <li><a href="#comprendre"><i class="fas fa-chevron-right"></i> Comprendre les VBG</a></li>
+                        <li><a href="#types"><i class="fas fa-chevron-right"></i> Types de violences</a></li>
+                        <li><a href="#quiz"><i class="fas fa-chevron-right"></i> Auto-évaluation</a></li>
+                        <li><a href="#ressources"><i class="fas fa-chevron-right"></i> Ressources</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4><i class="fas fa-life-ring"></i> Obtenir de l'aide</h4>
+                    <ul>
+                        <li><a href="#bot"><i class="fas fa-chevron-right"></i> Bot Telegram</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Numéros d'urgence</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Trouver un centre</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Aide juridique</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4><i class="fas fa-envelope"></i> Contact</h4>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> À propos</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Partenaires</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Devenir bénévole</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Nous contacter</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 SafeHer. Tous droits réservés.</p>
+                <p>Fait avec <i class="fas fa-heart"></i> lors du Hackathon VBG 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Quiz functionality
+        document.querySelectorAll('.quiz-option').forEach(option => {
+            option.addEventListener('click', function() {
+                const parent = this.parentElement;
+                parent.querySelectorAll('.quiz-option').forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                
+                const allAnswered = document.querySelectorAll('.quiz-question').length === 
+                                   document.querySelectorAll('.quiz-option.selected').length;
+                
+                if (allAnswered) {
+                    const selectedOptions = document.querySelectorAll('.quiz-option.selected');
+                    let score = 0;
+                    selectedOptions.forEach(opt => {
+                        if (opt.dataset.value === 'yes') score += 2;
+                        if (opt.dataset.value === 'sometimes') score += 1;
+                    });
+                    
+                    const result = document.getElementById('quizResult');
+                    if (score >= 3) {
+                        result.classList.add('visible');
+                    }
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.boxShadow = '0 4px 30px rgba(107, 76, 122, 0.15)';
+            } else {
+                nav.style.boxShadow = '0 2px 20px rgba(107, 76, 122, 0.1)';
+            }
+        });
+
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+    </script>
+</body>
+</html>

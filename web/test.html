@@ -1,0 +1,1577 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#6B4C7A">
+    <meta name="description" content="SafeHer - Protection des femmes et filles contre les Violences Basées sur le Genre">
+    <title>SafeHer - Protection contre les VBG</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #6B4C7A;
+            --primary-dark: #4A3354;
+            --primary-light: #9D7FB0;
+            --accent: #E8998D;
+            --accent-light: #F2BCB5;
+            --warm: #F5E6D3;
+            --warm-light: #FDF8F3;
+            --text-dark: #2D2A32;
+            --text-medium: #5A5662;
+            --text-light: #8A8694;
+            --white: #FFFFFF;
+            --success: #7CB69D;
+            --warning: #E5B35A;
+            --danger: #D66853;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            font-size: 16px;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            background: var(--warm-light);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* ============================================
+           NAVIGATION - MOBILE FIRST
+        ============================================ */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 0.8rem 1rem;
+            box-shadow: 0 2px 20px rgba(107, 76, 122, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .logo i {
+            color: var(--accent);
+            font-size: 1.2rem;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        /* Desktop nav - hidden on mobile */
+        .nav-links {
+            display: none;
+            list-style: none;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white) !important;
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+        }
+
+        /* Mobile menu button */
+        .mobile-menu {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+        .mobile-cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .mobile-menu-btn {
+            font-size: 1.4rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Mobile Nav Overlay */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--white);
+            z-index: 1001;
+            padding: 5rem 1.5rem 2rem;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .mobile-nav.active {
+            display: flex;
+        }
+
+        .mobile-nav a {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 12px;
+            transition: background 0.3s ease;
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a:active {
+            background: var(--warm-light);
+        }
+
+        .mobile-nav a i {
+            width: 24px;
+            color: var(--primary);
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.8rem;
+            color: var(--primary);
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        /* ============================================
+           HERO - MOBILE FIRST
+        ============================================ */
+        .hero {
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            align-items: center;
+            padding: 5rem 1.5rem 2rem;
+            background: linear-gradient(135deg, var(--warm-light) 0%, var(--warm) 100%);
+            position: relative;
+        }
+
+        .hero-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .hero-content {
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            background: var(--accent-light);
+            color: var(--primary-dark);
+            padding: 0.4rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 1.2rem;
+        }
+
+        .hero h1 {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            color: var(--accent);
+        }
+
+        .hero p {
+            font-size: 1rem;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            align-items: center;
+        }
+
+        .btn {
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(107, 76, 122, 0.4);
+        }
+
+        .btn-secondary {
+            background: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary-light);
+        }
+
+        .hero-visual {
+            display: none;
+        }
+
+        /* ============================================
+           STATS - MOBILE FIRST
+        ============================================ */
+        .stats {
+            background: var(--white);
+            padding: 2rem 1rem;
+        }
+
+        .stats-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.8rem;
+        }
+
+        .stat-item {
+            padding: 1rem 0.5rem;
+            text-align: center;
+        }
+
+        .stat-icon {
+            width: 45px;
+            height: 45px;
+            margin: 0 auto 0.6rem;
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--white);
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 0.2rem;
+        }
+
+        .stat-label {
+            color: var(--text-medium);
+            font-size: 0.75rem;
+            line-height: 1.3;
+        }
+
+        /* ============================================
+           SECTIONS - MOBILE FIRST
+        ============================================ */
+        .section {
+            padding: 2.5rem 1.2rem;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-header i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 0.6rem;
+            display: block;
+        }
+
+        .section-header h2 {
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.6rem;
+        }
+
+        .section-header p {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+        }
+
+        /* ============================================
+           COMPRENDRE - MOBILE FIRST
+        ============================================ */
+        .comprendre {
+            background: var(--white);
+        }
+
+        .definition-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 16px;
+            padding: 1.2rem;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+
+        .definition-box h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .definition-box p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            opacity: 0.95;
+        }
+
+        .criteria-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+        }
+
+        .criteria-card {
+            background: var(--warm-light);
+            border-radius: 14px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .criteria-icon {
+            width: 55px;
+            height: 55px;
+            margin: 0 auto 0.8rem;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--accent-light) 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            color: var(--white);
+        }
+
+        .criteria-card h4 {
+            font-size: 1rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.4rem;
+        }
+
+        .criteria-card p {
+            color: var(--text-medium);
+            font-size: 0.85rem;
+        }
+
+        /* ============================================
+           TYPES - MOBILE FIRST
+        ============================================ */
+        .types {
+            background: var(--warm-light);
+        }
+
+        .types-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+
+        .type-card {
+            background: var(--white);
+            border-radius: 14px;
+            padding: 1.2rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .type-card.physical { border-left-color: var(--danger); }
+        .type-card.sexual { border-left-color: #9B59B6; }
+        .type-card.psychological { border-left-color: var(--warning); }
+        .type-card.economic { border-left-color: #3498DB; }
+        .type-card.marriage { border-left-color: var(--accent); }
+        .type-card.cyber { border-left-color: #1ABC9C; }
+
+        .type-header {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .type-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: var(--white);
+            flex-shrink: 0;
+        }
+
+        .type-card.physical .type-icon { background: var(--danger); }
+        .type-card.sexual .type-icon { background: #9B59B6; }
+        .type-card.psychological .type-icon { background: var(--warning); }
+        .type-card.economic .type-icon { background: #3498DB; }
+        .type-card.marriage .type-icon { background: var(--accent); }
+        .type-card.cyber .type-icon { background: #1ABC9C; }
+
+        .type-card h4 {
+            font-size: 0.95rem;
+            color: var(--primary-dark);
+        }
+
+        .type-card > p {
+            color: var(--text-medium);
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .type-examples {
+            font-size: 0.8rem;
+            color: var(--text-light);
+            font-style: italic;
+            display: flex;
+            align-items: flex-start;
+            gap: 0.4rem;
+        }
+
+        .type-examples i {
+            color: var(--primary-light);
+            margin-top: 2px;
+            font-size: 0.7rem;
+        }
+
+        /* ============================================
+           QUIZ - MOBILE FIRST
+        ============================================ */
+        .quiz {
+            background: var(--white);
+        }
+
+        .quiz-container {
+            background: var(--warm-light);
+            border-radius: 16px;
+            padding: 1.2rem;
+        }
+
+        .quiz-question {
+            margin-bottom: 1.2rem;
+        }
+
+        .quiz-question p {
+            font-size: 0.9rem;
+            color: var(--text-dark);
+            margin-bottom: 0.6rem;
+            padding-left: 0.8rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .quiz-options {
+            display: flex;
+            gap: 0.4rem;
+        }
+
+        .quiz-option {
+            flex: 1;
+            padding: 0.7rem 0.4rem;
+            border: 2px solid var(--primary-light);
+            border-radius: 8px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: var(--white);
+            font-weight: 600;
+            font-size: 0.8rem;
+        }
+
+        .quiz-option:hover,
+        .quiz-option.selected {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: var(--white);
+        }
+
+        .quiz-result {
+            margin-top: 1.2rem;
+            padding: 1.2rem;
+            background: var(--white);
+            border-radius: 12px;
+            display: none;
+            border-left: 4px solid var(--warning);
+        }
+
+        .quiz-result.visible {
+            display: block;
+        }
+
+        .quiz-result h4 {
+            color: var(--primary-dark);
+            margin-bottom: 0.6rem;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .quiz-result p {
+            color: var(--text-medium);
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+        }
+
+        /* ============================================
+           RESSOURCES - MOBILE FIRST
+        ============================================ */
+        .resources {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: var(--white);
+        }
+
+        .resources .section-header i,
+        .resources .section-header h2,
+        .resources .section-header p {
+            color: var(--white);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+        }
+
+        .resource-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 14px;
+            padding: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .resource-icon {
+            width: 45px;
+            height: 45px;
+            background: var(--accent);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--white);
+        }
+
+        .resource-card h4 {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+        }
+
+        .resource-card p {
+            opacity: 0.9;
+            font-size: 0.85rem;
+            margin-bottom: 0.6rem;
+        }
+
+        .resource-link {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: 0.85rem;
+        }
+
+        /* ============================================
+           BOT CTA - MOBILE FIRST
+        ============================================ */
+        .bot-cta {
+            background: var(--warm-light);
+        }
+
+        .bot-content {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .bot-content h2 {
+            font-size: 1.4rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.8rem;
+        }
+
+        .bot-content > p {
+            color: var(--text-medium);
+            font-size: 0.9rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .bot-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+            text-align: left;
+        }
+
+        .bot-features li {
+            padding: 0.6rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        .bot-features li i {
+            width: 22px;
+            height: 22px;
+            background: var(--success);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.65rem;
+            flex-shrink: 0;
+        }
+
+        .telegram-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, #0088cc 0%, #005f8a 100%);
+            color: var(--white);
+            padding: 0.9rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0, 136, 204, 0.4);
+            width: 100%;
+            max-width: 280px;
+        }
+
+        .bot-visual {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 1rem;
+            box-shadow: 0 10px 30px rgba(107, 76, 122, 0.1);
+            max-width: 350px;
+            margin: 0 auto;
+        }
+
+        .bot-mockup {
+            background: linear-gradient(135deg, #0088cc 0%, #005f8a 100%);
+            border-radius: 12px;
+            padding: 1rem;
+            color: var(--white);
+        }
+
+        .bot-header {
+            display: flex;
+            align-items: center;
+            gap: 0.7rem;
+            padding-bottom: 0.7rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            margin-bottom: 0.7rem;
+        }
+
+        .bot-avatar {
+            width: 36px;
+            height: 36px;
+            background: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: var(--primary);
+        }
+
+        .bot-name h4 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+
+        .bot-name p {
+            font-size: 0.7rem;
+            opacity: 0.8;
+        }
+
+        .bot-message {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.7rem;
+            border-radius: 10px;
+            border-top-left-radius: 3px;
+            font-size: 0.8rem;
+            line-height: 1.5;
+        }
+
+        .bot-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.3rem;
+            margin-top: 0.7rem;
+        }
+
+        .bot-btn {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.4rem 0.7rem;
+            border-radius: 14px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+        }
+
+        /* ============================================
+           EMERGENCY BANNER - MOBILE FIRST
+        ============================================ */
+        .emergency-banner {
+            background: linear-gradient(135deg, var(--danger) 0%, #c0392b 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 0.7rem 1rem;
+            font-weight: 600;
+            font-size: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        .emergency-banner i {
+            animation: pulse 1.5s infinite;
+        }
+
+        .emergency-banner a {
+            color: var(--white);
+            text-decoration: underline;
+            font-weight: 700;
+        }
+
+        /* ============================================
+           FOOTER - MOBILE FIRST
+        ============================================ */
+        footer {
+            background: var(--primary-dark);
+            color: var(--white);
+            padding: 2rem 1.2rem 1.2rem;
+        }
+
+        .footer-brand {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-brand .logo {
+            color: var(--white);
+            justify-content: center;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-brand p {
+            opacity: 0.8;
+            font-size: 0.85rem;
+            line-height: 1.6;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 0.6rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+
+        .footer-social a {
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 0.9rem;
+        }
+
+        .footer-links-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links h4 {
+            font-family: 'Source Sans Pro', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-links a {
+            color: var(--white);
+            opacity: 0.8;
+            text-decoration: none;
+            font-size: 0.8rem;
+        }
+
+        .footer-bottom {
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: center;
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        .footer-bottom p {
+            margin-bottom: 0.3rem;
+        }
+
+        .footer-bottom i {
+            color: var(--accent);
+        }
+
+        /* ============================================
+           ANIMATIONS
+        ============================================ */
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* ============================================
+           TABLET (600px+)
+        ============================================ */
+        @media (min-width: 600px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero-buttons {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .btn {
+                width: auto;
+            }
+
+            .stats-container {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .section {
+                padding: 3rem 1.5rem;
+            }
+
+            .criteria-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .types-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .resources-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quiz-container {
+                padding: 1.5rem;
+            }
+        }
+
+        /* ============================================
+           DESKTOP (1024px+)
+        ============================================ */
+        @media (min-width: 1024px) {
+            .mobile-menu {
+                display: none;
+            }
+
+            .nav-links {
+                display: flex;
+            }
+
+            .hero {
+                padding: 7rem 2rem 4rem;
+            }
+
+            .hero-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 4rem;
+                align-items: center;
+            }
+
+            .hero-content {
+                text-align: left;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .hero-buttons {
+                justify-content: flex-start;
+            }
+
+            .hero-visual {
+                display: block;
+            }
+
+            .hero-circle {
+                width: 320px;
+                height: 320px;
+                background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto;
+                position: relative;
+            }
+
+            .hero-circle i {
+                font-size: 6rem;
+                color: var(--white);
+                opacity: 0.9;
+            }
+
+            .hero-card {
+                position: absolute;
+                background: var(--white);
+                padding: 0.9rem 1rem;
+                border-radius: 10px;
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+                display: flex;
+                align-items: center;
+                gap: 0.7rem;
+                animation: float 3s ease-in-out infinite;
+            }
+
+            .hero-card-1 { top: 10%; left: -15%; }
+            .hero-card-2 { bottom: 15%; right: -10%; animation-delay: 1.5s; }
+
+            @keyframes float {
+                0%, 100% { transform: translateY(0); }
+                50% { transform: translateY(-8px); }
+            }
+
+            .hero-card-icon {
+                width: 40px;
+                height: 40px;
+                border-radius: 8px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1rem;
+            }
+
+            .hero-card-icon.purple { background: var(--primary-light); color: var(--white); }
+            .hero-card-icon.coral { background: var(--accent-light); color: var(--primary-dark); }
+
+            .hero-card-text h4 {
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 0.85rem;
+                font-weight: 700;
+            }
+
+            .hero-card-text p {
+                font-size: 0.7rem;
+                color: var(--text-light);
+                margin: 0;
+            }
+
+            .section {
+                padding: 4rem 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+
+            .types-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .resources-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .bot-cta .bot-container {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 3rem;
+                align-items: center;
+                max-width: 1000px;
+                margin: 0 auto;
+            }
+
+            .bot-content {
+                text-align: left;
+                margin-bottom: 0;
+            }
+
+            .bot-content h2 {
+                font-size: 2rem;
+            }
+
+            .telegram-btn {
+                width: auto;
+            }
+
+            .footer-container {
+                max-width: 1100px;
+                margin: 0 auto;
+            }
+
+            .footer-main {
+                display: grid;
+                grid-template-columns: 2fr 1fr 1fr 1fr;
+                gap: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .footer-brand {
+                text-align: left;
+                margin-bottom: 0;
+            }
+
+            .footer-brand .logo {
+                justify-content: flex-start;
+            }
+
+            .footer-social {
+                justify-content: flex-start;
+            }
+
+            .footer-links-grid {
+                display: contents;
+            }
+
+            .footer-bottom {
+                display: flex;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Bandeau d'urgence -->
+    <div class="emergency-banner">
+        <i class="fas fa-exclamation-triangle"></i>
+        <span>En danger ? <a href="tel:117">117</a></span>
+        <span>•</span>
+        <a href="#bot">Bot d'alerte</a>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-shield-heart"></i>
+                Safe<span>Her</span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#comprendre">Comprendre</a></li>
+                <li><a href="#types">Types</a></li>
+                <li><a href="#quiz">Quiz</a></li>
+                <li><a href="#ressources">Ressources</a></li>
+                <li><a href="#bot" class="nav-cta"><i class="fas fa-life-ring"></i> Aide</a></li>
+            </ul>
+            
+            <div class="mobile-menu">
+                <a href="#bot" class="mobile-cta"><i class="fas fa-life-ring"></i> Aide</a>
+                <div class="mobile-menu-btn" onclick="toggleMobileNav()">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-close" onclick="toggleMobileNav()">
+            <i class="fas fa-times"></i>
+        </div>
+        <a href="#comprendre" onclick="toggleMobileNav()"><i class="fas fa-book-open"></i> Comprendre les VBG</a>
+        <a href="#types" onclick="toggleMobileNav()"><i class="fas fa-list"></i> Types de violences</a>
+        <a href="#quiz" onclick="toggleMobileNav()"><i class="fas fa-clipboard-question"></i> Suis-je victime ?</a>
+        <a href="#ressources" onclick="toggleMobileNav()"><i class="fas fa-hands-helping"></i> Ressources</a>
+        <a href="#bot" onclick="toggleMobileNav()" style="background: var(--primary); color: white; margin-top: 1rem;">
+            <i class="fas fa-life-ring"></i> Obtenir de l'aide
+        </a>
+    </div>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <span class="hero-badge">
+                    <i class="fas fa-shield-alt"></i>
+                    Protection • Information • Accompagnement
+                </span>
+                <h1>Ensemble contre les <span>violences</span> faites aux femmes</h1>
+                <p>SafeHer vous accompagne face aux Violences Basées sur le Genre. Informez-vous, protégez-vous, accédez à l'aide.</p>
+                <div class="hero-buttons">
+                    <a href="#bot" class="btn btn-primary">
+                        <i class="fas fa-robot"></i> Accéder au Bot
+                    </a>
+                    <a href="#comprendre" class="btn btn-secondary">
+                        <i class="fas fa-arrow-down"></i> En savoir plus
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="hero-circle">
+                    <i class="fas fa-hand-holding-heart"></i>
+                    <div class="hero-card hero-card-1">
+                        <div class="hero-card-icon purple"><i class="fas fa-shield-alt"></i></div>
+                        <div class="hero-card-text">
+                            <h4>Protection 24/7</h4>
+                            <p>Alerte en temps réel</p>
+                        </div>
+                    </div>
+                    <div class="hero-card hero-card-2">
+                        <div class="hero-card-icon coral"><i class="fas fa-comments"></i></div>
+                        <div class="hero-card-text">
+                            <h4>Accompagnement</h4>
+                            <p>Experts à votre écoute</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats -->
+    <section class="stats">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-users"></i></div>
+                <div class="stat-number">1/3</div>
+                <div class="stat-label">femmes victimes de violence</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-globe"></i></div>
+                <div class="stat-number">60%</div>
+                <div class="stat-label">cyberviolence en ligne</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-eye-slash"></i></div>
+                <div class="stat-number">80%</div>
+                <div class="stat-label">cas non signalés</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-icon"><i class="fas fa-clock"></i></div>
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">bot disponible</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Comprendre -->
+    <section id="comprendre" class="section comprendre">
+        <div class="section-header">
+            <i class="fas fa-graduation-cap"></i>
+            <h2>Comprendre les VBG</h2>
+            <p>Violences dirigées contre une personne en raison de son genre.</p>
+        </div>
+
+        <div class="definition-box">
+            <h3><i class="fas fa-info-circle"></i> Définition</h3>
+            <p>Une VBG est tout acte nuisible perpétré contre la volonté d'une personne, fondé sur les différences sociales entre hommes et femmes.</p>
+        </div>
+
+        <div class="criteria-grid">
+            <div class="criteria-card">
+                <div class="criteria-icon"><i class="fas fa-balance-scale"></i></div>
+                <h4>Déséquilibre de pouvoir</h4>
+                <p>Relation de domination : conjoint, parent, employeur...</p>
+            </div>
+            <div class="criteria-card">
+                <div class="criteria-icon"><i class="fas fa-ban"></i></div>
+                <h4>Absence de consentement</h4>
+                <p>Accord libre et éclairé non donné.</p>
+            </div>
+            <div class="criteria-card">
+                <div class="criteria-icon"><i class="fas fa-landmark"></i></div>
+                <h4>Construction sociale</h4>
+                <p>Normes de genre discriminatoires.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Types -->
+    <section id="types" class="section types">
+        <div class="section-header">
+            <i class="fas fa-exclamation-circle"></i>
+            <h2>Types de violences</h2>
+            <p>Reconnaître ces formes est essentiel.</p>
+        </div>
+
+        <div class="types-grid">
+            <div class="type-card physical">
+                <div class="type-header">
+                    <div class="type-icon"><i class="fas fa-fist-raised"></i></div>
+                    <h4>Violence physique</h4>
+                </div>
+                <p>Actes visant à blesser physiquement.</p>
+                <span class="type-examples"><i class="fas fa-arrow-right"></i> Coups, brûlures, séquestration...</span>
+            </div>
+            <div class="type-card sexual">
+                <div class="type-header">
+                    <div class="type-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h4>Violence sexuelle</h4>
+                </div>
+                <p>Actes sexuels non consentis.</p>
+                <span class="type-examples"><i class="fas fa-arrow-right"></i> Viol, attouchements, harcèlement...</span>
+            </div>
+            <div class="type-card psychological">
+                <div class="type-header">
+                    <div class="type-icon"><i class="fas fa-brain"></i></div>
+                    <h4>Violence psychologique</h4>
+                </div>
+                <p>Atteintes à l'estime de soi.</p>
+                <span class="type-examples"><i class="fas fa-arrow-right"></i> Insultes, humiliations, menaces...</span>
+            </div>
+            <div class="type-card economic">
+                <div class="type-header">
+                    <div class="type-icon"><i class="fas fa-wallet"></i></div>
+                    <h4>Violence économique</h4>
+                </div>
+                <p>Contrôle des ressources financières.</p>
+                <span class="type-examples"><i class="fas fa-arrow-right"></i> Privation d'argent, interdiction de travailler...</span>
+            </div>
+            <div class="type-card marriage">
+                <div class="type-header">
+                    <div class="type-icon"><i class="fas fa-ring"></i></div>
+                    <h4>Mariage forcé</h4>
+                </div>
+                <p>Union imposée sans consentement.</p>
+                <span class="type-examples"><i class="fas fa-arrow-right"></i> Mariage avant 18 ans, arrangé...</span>
+            </div>
+            <div class="type-card cyber">
+                <div class="type-header">
+                    <div class="type-icon"><i class="fas fa-mobile-alt"></i></div>
+                    <h4>Cyberviolence</h4>
+                </div>
+                <p>Violences via technologies numériques.</p>
+                <span class="type-examples"><i class="fas fa-arrow-right"></i> Harcèlement en ligne, revenge porn...</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz -->
+    <section id="quiz" class="section quiz">
+        <div class="section-header">
+            <i class="fas fa-clipboard-check"></i>
+            <h2>Suis-je victime ?</h2>
+            <p>Auto-évaluation confidentielle.</p>
+        </div>
+
+        <div class="quiz-container">
+            <div class="quiz-question">
+                <p>Avez-vous peur de votre partenaire ?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this)">Oui</div>
+                    <div class="quiz-option" onclick="selectOption(this)">Parfois</div>
+                    <div class="quiz-option" onclick="selectOption(this)">Non</div>
+                </div>
+            </div>
+            <div class="quiz-question">
+                <p>Contrôle-t-il vos déplacements ou argent ?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this)">Oui</div>
+                    <div class="quiz-option" onclick="selectOption(this)">Parfois</div>
+                    <div class="quiz-option" onclick="selectOption(this)">Non</div>
+                </div>
+            </div>
+            <div class="quiz-question">
+                <p>Avez-vous été insultée ou humiliée ?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this)">Oui</div>
+                    <div class="quiz-option" onclick="selectOption(this)">Parfois</div>
+                    <div class="quiz-option" onclick="selectOption(this)">Non</div>
+                </div>
+            </div>
+            <div class="quiz-question">
+                <p>Avez-vous subi des violences physiques ?</p>
+                <div class="quiz-options">
+                    <div class="quiz-option" onclick="selectOption(this)">Oui</div>
+                    <div class="quiz-option" onclick="selectOption(this)">Une fois</div>
+                    <div class="quiz-option" onclick="selectOption(this)">Non</div>
+                </div>
+            </div>
+
+            <div class="quiz-result" id="quizResult">
+                <h4><i class="fas fa-exclamation-triangle"></i> Attention requise</h4>
+                <p>Vos réponses indiquent une situation possible de violence. Vous n'êtes pas seule.</p>
+                <a href="#bot" class="btn btn-primary" style="width: auto; padding: 0.7rem 1.2rem; font-size: 0.9rem;">
+                    <i class="fas fa-arrow-right"></i> Obtenir de l'aide
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ressources -->
+    <section id="ressources" class="section resources">
+        <div class="section-header">
+            <i class="fas fa-hands-helping"></i>
+            <h2>Ressources utiles</h2>
+            <p>Organisations prêtes à vous aider.</p>
+        </div>
+
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-icon"><i class="fas fa-phone-alt"></i></div>
+                <h4>Lignes d'écoute</h4>
+                <p>Professionnels disponibles 24h/24.</p>
+                <a href="#" class="resource-link">Numéros <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon"><i class="fas fa-hospital"></i></div>
+                <h4>Centres de santé</h4>
+                <p>Prise en charge médicale.</p>
+                <a href="#" class="resource-link">Trouver <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon"><i class="fas fa-gavel"></i></div>
+                <h4>Aide juridique</h4>
+                <p>Assistance gratuite.</p>
+                <a href="#" class="resource-link">Aide <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon"><i class="fas fa-home"></i></div>
+                <h4>Hébergement</h4>
+                <p>Centres d'accueil d'urgence.</p>
+                <a href="#" class="resource-link">Refuge <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon"><i class="fas fa-heart"></i></div>
+                <h4>ONG partenaires</h4>
+                <p>Accompagnement et soutien.</p>
+                <a href="#" class="resource-link">ONG <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="resource-card">
+                <div class="resource-icon"><i class="fas fa-user-md"></i></div>
+                <h4>Soutien psy</h4>
+                <p>Psychologues spécialisés.</p>
+                <a href="#" class="resource-link">RDV <i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bot -->
+    <section id="bot" class="section bot-cta">
+        <div class="bot-container">
+            <div class="bot-content">
+                <h2>Bot Telegram SafeHer</h2>
+                <p>Assistant 24h/24 pour vous accompagner et alerter vos proches en cas d'urgence.</p>
+                
+                <ul class="bot-features">
+                    <li><i class="fas fa-check"></i> Orientation personnalisée</li>
+                    <li><i class="fas fa-check"></i> Parcours adapté à votre situation</li>
+                    <li><i class="fas fa-check"></i> Alerte SOS discrète</li>
+                    <li><i class="fas fa-check"></i> 100% confidentiel et gratuit</li>
+                </ul>
+
+                <a href="https://t.me/SafeHerBot" target="_blank" class="telegram-btn">
+                    <i class="fab fa-telegram-plane"></i> Ouvrir SafeHer Bot
+                </a>
+            </div>
+
+            <div class="bot-visual">
+                <div class="bot-mockup">
+                    <div class="bot-header">
+                        <div class="bot-avatar"><i class="fas fa-shield-alt"></i></div>
+                        <div class="bot-name">
+                            <h4>SafeHer Bot</h4>
+                            <p>🟢 En ligne</p>
+                        </div>
+                    </div>
+                    <div class="bot-message">
+                        Bonjour 💜 Je suis là pour vous aider en toute confidentialité.
+                    </div>
+                    <div class="bot-buttons">
+                        <span class="bot-btn"><i class="fas fa-exclamation-circle"></i> Urgence</span>
+                        <span class="bot-btn"><i class="fas fa-comments"></i> Aide</span>
+                        <span class="bot-btn"><i class="fas fa-book"></i> Infos</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-main">
+                <div class="footer-brand">
+                    <a href="#" class="logo"><i class="fas fa-shield-heart"></i> Safe<span>Her</span></a>
+                    <p>Protection des femmes et filles contre les VBG.</p>
+                    <div class="footer-social">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-links-grid">
+                    <div class="footer-links">
+                        <h4>Navigation</h4>
+                        <ul>
+                            <li><a href="#comprendre">Comprendre</a></li>
+                            <li><a href="#types">Types</a></li>
+                            <li><a href="#quiz">Quiz</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links">
+                        <h4>Aide</h4>
+                        <ul>
+                            <li><a href="#bot">Bot Telegram</a></li>
+                            <li><a href="#ressources">Ressources</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 SafeHer</p>
+                <p>Fait avec <i class="fas fa-heart"></i> - Hackathon VBG</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMobileNav() {
+            const nav = document.getElementById('mobileNav');
+            nav.classList.toggle('active');
+            document.body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+        }
+
+        let answered = 0, score = 0;
+        function selectOption(el) {
+            const parent = el.parentElement;
+            if (!parent.querySelector('.selected')) answered++;
+            parent.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+            el.classList.add('selected');
+            const t = el.textContent;
+            if (t === 'Oui') score += 2;
+            else if (t === 'Parfois' || t === 'Une fois') score += 1;
+            if (answered >= 4 && score >= 3) document.getElementById('quizResult').classList.add('visible');
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const t = document.querySelector(this.getAttribute('href'));
+                    if (t) t.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>

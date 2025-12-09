@@ -1,0 +1,30 @@
+services:
+  app:
+      restart: "on-failure"
+      build:
+        context: .
+      volumes:
+          - ./bot:/app
+      command: >
+          sh -c "python prototype.py"
+      env_file:
+          - ./.env
+    
+
+  web:
+    build:
+        context: ./nginx
+        additional_contexts:
+            - pages=./web       
+    ports:
+        - 83:80
+        - 440:443
+      
+    volumes:
+        - ./web:/usr/share/nginx/html/
+       
+
+    
+volumes:
+  .:
+ 
