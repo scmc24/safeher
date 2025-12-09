@@ -7,9 +7,10 @@
 
 ## 🎯 Problème Adressé
 
-- **1 femme sur 3** est victime de violence dans sa vie
-- **60% des femmes en ligne** subissent du cyberharcèlement
-- **80% des cas** ne sont jamais signalés
+- **1 femme sur 3** est victime de violence dans sa vie  
+- **60% des femmes en ligne** subissent du cyberharcèlement  
+- **80% des cas** ne sont jamais signalés  
+> _Source : Enquêtes démographique sur la santé 2018_
 - Les victimes ne savent souvent pas vers qui se tourner ni dans quel ordre
 
 ## 💡 Notre Solution
@@ -175,12 +176,12 @@ Pour HTTPS, ajoutez un reverse proxy comme Traefik ou Nginx Proxy Manager.
    Alerte SOS         Identification
    + Numéros          du type de VBG
    urgence                  │
-                           ▼
-                  ┌────────────────┐
-                  │ Parcours       │
-                  │ personnalisé   │
-                  │ d'experts      │
-                  └────────────────┘
+                            ▼
+                    ┌────────────────┐
+                    │ Parcours       │
+                    │ personnalisé   │
+                    │ d'experts      │
+                    └────────────────┘
 ```
 
 ## 🗂️ Types de VBG et Parcours
@@ -243,9 +244,10 @@ Pour HTTPS, ajoutez un reverse proxy comme Traefik ou Nginx Proxy Manager.
 
 ## 👥 Équipe
 
-- **[Votre nom]** - Développeur / Chef de projet
-- **[Coéquipier 1]** - [Rôle]
-- **[Coéquipier 2]** - [Rôle]
+- **[Votre nom]** - Développeur / Chef d'équipe
+- **SOKOUDJOU CHENDJOU Christian Manuel** - [Rôle]
+- **STEPHANE ROYLEX NKOLO KOUMNDA** - Développeur
+- **[Coéquipier 3]** - [Rôle]
 
 ## 🤝 Partenaires Potentiels
 
