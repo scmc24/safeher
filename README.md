@@ -27,6 +27,7 @@ SafeHer est une plateforme double composée de :
 | 🔍 **Identification** | Le bot identifie le type de VBG via des questions |
 | 🛤️ **Parcours personnalisé** | Chaque type de violence = un parcours d'experts adapté |
 | 👨‍⚕️ **Redirection intelligente** | Médecin → Police → Avocat → Psychologue (selon le cas) |
+| 🛡️ **Formation sécurité numérique** | Conseils et ressources pour renforcer la sécurité et la confidentialité sur les réseaux sociaux |
 | 🆘 **Alerte SOS** | Alerte discrète aux contacts de confiance |
 | 📍 **Géolocalisation** | Partage de position en cas d'urgence |
 | 🔒 **Confidentialité** | Aucune donnée personnelle stockée |
@@ -219,6 +220,7 @@ Pour HTTPS, ajoutez un reverse proxy comme Traefik ou Nginx Proxy Manager.
 | Bot Telegram | ❌ | ❌ | ✅ |
 | Parcours personnalisé | ❌ | ❌ | ✅ |
 | Fonctionne hors-ligne | ❌ | ❌ | Partiellement |
+| Formation sécurité numérique | ❌ | Partiel | ✅ |
 | Multi-experts | Partiel | ❌ | ✅ |
 | Gratuit | ✅ | ✅ | ✅ |
 | Open source | ❌ | ❌ | ✅ |
@@ -244,10 +246,10 @@ Pour HTTPS, ajoutez un reverse proxy comme Traefik ou Nginx Proxy Manager.
 
 ## 👥 Équipe
 
-- **[Votre nom]** - Développeur / Chef d'équipe
-- **SOKOUDJOU CHENDJOU Christian Manuel** - [Rôle]
-- **STEPHANE ROYLEX NKOLO KOUMNDA** - Développeur
-- **[Coéquipier 3]** - [Rôle]
+- **ANITA DONGMO** - DataScientist / Chef d'équipe
+- **SOKOUDJOU CHRISTIAN** - Chef de projet
+- **STEPHANE ROYLEX** - Développeur
+- **DONGMO MERVEILLE** - Sociologue specialisée en population et développement
 
 ## 🤝 Partenaires Potentiels
 
