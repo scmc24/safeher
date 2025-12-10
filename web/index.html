@@ -71,6 +71,13 @@
             box-shadow: 0 2px 20px rgba(107, 76, 122, 0.1);
         }
 
+        stats-source small {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+        }
+
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
@@ -935,6 +942,95 @@
             font-size: 1.4rem;
         }
 
+        /* Responsive design for prospect-image */
+        .prospect-section {
+            background: var(--white);
+            border-radius: 26px;
+            box-shadow: 0 4px 26px rgba(107,76,122,0.08);
+            padding: 2.5rem 2rem 2rem 2rem;
+            margin: 3rem auto 2.5rem auto;
+            max-width: 900px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .prospect-section h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .prospect-section p {
+            color: var(--text-medium);
+            font-size: 1.07rem;
+            margin-bottom: 1.3rem;
+            text-align: center;
+            max-width: 600px;
+        }
+
+        .prospect-section .btn {
+            margin-top: 0.4rem;
+            font-size: 1.07rem;
+            padding: 0.9rem 2rem;
+        }
+
+        .prospect-section .btn i {
+            margin-right: 0.6rem;
+        }
+
+        .prospect-section .prospect-image {
+            display: block;
+            max-width: 700px;
+            width: 95%;
+            margin: 2rem auto 0 auto;
+            border-radius: 14px;
+            box-shadow: 0 4px 28px rgba(107,76,122,0.12);
+            object-fit: cover;
+            transition: box-shadow 0.3s, transform 0.23s;
+        }
+
+        .prospect-section .prospect-image:hover {
+            box-shadow: 0 10px 42px rgba(107,76,122,0.18);
+            transform: translateY(-4px) scale(1.018);
+        }
+
+        @media screen and (max-width: 900px) {
+            .prospect-section {
+                max-width: 98vw;
+                padding: 2.1rem 0.7rem 1.3rem 0.7rem;
+            }
+            .prospect-section .prospect-image {
+                max-width: 95vw;
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .prospect-section {
+                padding: 1.2rem 2vw 1.1rem 2vw;
+                border-radius: 11px;
+            }
+            .prospect-section h3 {
+                font-size: 1.05rem;
+            }
+            .prospect-section p {
+                font-size: 0.97rem;
+            }
+            .prospect-section .btn {
+                font-size: 0.97rem;
+                padding: 0.8rem 1.2rem;
+            }
+            .prospect-section .prospect-image {
+                max-width: 100vw;
+                border-radius: 10px;
+                margin-top: 1.2rem;
+            }
+        }
+
+        
         /* Emergency Banner */
         .emergency-banner { 
             background: linear-gradient(135deg, var(--danger) 0%, #c0392b 100%);
@@ -1838,6 +1934,18 @@
                 <a href="#" class="formation-link">En savoir plus <i class="fas fa-arrow-right"></i></a>
             </div>
         </div>
+
+        <div class="prospect-section">
+            <h3><i class="fas fa-file-alt"></i> Prospectus : Détecter et réagir face aux VBG en ligne</h3>
+            <p>Apprenez à reconnaître, signaler et faire face aux violences basées sur le genre (VBG) sur les réseaux sociaux grâce à notre guide PDF détaillé.</p>
+            <a href="safeher_prospect.pdf" class="btn btn-secondary" target="_blank">
+                <i class="fas fa-download"></i> Télécharger le prospectus
+            </a>
+            <div style="margin-top: 1rem;">
+                <img src="safeher_prospect.jpg" alt="Aperçu du prospectus SafeHer - détecter et réagir aux VBG sur les réseaux" class="prospect-image" >
+            </div>
+        </div>
+
     </section>
 
     <!-- Bot CTA -->
